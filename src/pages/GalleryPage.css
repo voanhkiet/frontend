@@ -20,4 +20,21 @@
 .painting-card img {
   width: 100%;
   border-radius: 8px;
+  height:auto;
+  max-width: 300px;
+}
+@media (max-width: 768px) {
+  .painting-gallery {
+    grid-template-columns: repeat(2, 1fr); /* Show 2 images per row on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .painting-gallery {
+    grid-template-columns: repeat(1, 1fr); /* Show 1 image per row on mobile */
+  }
+
+  .painting-card {
+    padding: 10px;
+  }
 }
