@@ -4,7 +4,7 @@ const HomePage = () => {
   const [paintings, setPaintings] = useState([]);
 
   useEffect(()=>{
-    fetch("http://localhost:5000/paintings")
+    fetch("https://backend-ybh5.onrender.com/paintings")
       .then((res) => res.json())
       .then((data) => setPaintings(data));
   }, [])
