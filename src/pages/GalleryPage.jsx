@@ -7,7 +7,7 @@ function GalleryPage(){
  const [paintings,setPaintings] = useState([]);
 
  useEffect(()=>{
-  axios.get("http://localhost:5000/paintings")
+  axios.get("https://backend-ybh5.onrender.com/paintings")
   .then((response)=>setPaintings(response.data))
   .catch((error)=>console.error("Error fetchin paintings:", error));
  },[]);
