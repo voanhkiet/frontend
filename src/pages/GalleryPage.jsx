@@ -18,7 +18,7 @@ function GalleryPage(){
       {paintings.map((painting)=>(
         <li className="painting-card" key={painting._id}>
           <h3>{painting.title}</h3>
-          <img className="rounded-lg shadow-lg hover:scale-105 transition" src={painting.image} alt={painting.title} />
+          <img loading="lazy" className="rounded-lg shadow-lg hover:scale-105 transition" src={painting.image} alt={painting.title} />
           <p>Price: ${painting.price}</p>
         </li>
       ))}
