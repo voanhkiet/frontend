@@ -38,3 +38,17 @@
     padding: 10px;
   }
 }
+
+.painting-container {
+  transition: transform 0.3s ease-in-out;
+}
+.painting-container:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  cursor: pointer;
+}
+.painting-container img {
+  transition: opacity 0.3s ease-in-out;
+}
+.painting-container:hover img {
+  opacity: 0.8; /* Fade effect */
+}
