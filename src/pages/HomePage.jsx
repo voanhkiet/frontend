@@ -4,7 +4,7 @@ const HomePage = () => {
   const [paintings, setPaintings] = useState([]);
   const [filteredPaintings, setFilteredPaintings] = useState([]);
   const [filter, setFilter] = useState("all");
-  
+  const [sortOrder, setSortOrder] = useState("default");
 
   useEffect(()=>{
     fetch("https://backend-ybh5.onrender.com/paintings")
@@ -33,6 +33,25 @@ const HomePage = () => {
     }
   };
 
+  const handleSortChange = (event) => {
+    const order = event.target.value;
+    setSortOrder(order);
+
+    let sortedPaintings = [...filteredPaintings];
+
+    if (order === "price-low-high") {
+      sortedPaintings.sort((a, b) => a.price - b.price);
+    } else if (order === "price-high-low") {
+      sortedPaintings.sort((a, b) => b.price - a.price);
+    } else if (order === "name-a-z") {
+      sortedPaintings.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (order === "name-z-a") {
+      sortedPaintings.sort((a, b) => b.title.localeCompare(a.title));
+    }
+
+    setFilteredPaintings(sortedPaintings);
+  };
+
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-4xl font-bold">Welcome to the Painting Store 🎨</h1>
@@ -42,6 +61,15 @@ const HomePage = () => {
         <option value="all">All Paintings</option>
         <option value="under-150">Under $150</option>
         <option value="above-150">Above $150</option>
+      </select>
+
+       {/* Sorting Dropdown */}
+      <select onChange={handleSortChange} className="mt-4 p-2 border rounded">
+        <option value="default">Sort by...</option>
+        <option value="price-low-high">Price (Low to High)</option>
+        <option value="price-high-low">Price (High to Low)</option>
+        <option value="name-a-z">Name (A-Z)</option>
+        <option value="name-z-a">Name (Z-A)</option>
       </select>
 
        {/* Painting Grid */}
