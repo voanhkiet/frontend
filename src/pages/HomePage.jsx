@@ -14,7 +14,7 @@ const HomePage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
         {paintings.map((painting) => (
           <div key={painting.id} className="shadow-lg p-4">
-            <img src={painting.image} alt={painting.title} className="w-full h-48 object-cover" />
+            <img src={`https://backend-ybh5.onrender.com${painting.image}`} alt={painting.title} className="w-full h-48 object-cover" />
             <h2 className="mt-2 font-bold">{painting.title}</h2>
             <p className="text-gray-600">${painting.price}</p>
           </div>
