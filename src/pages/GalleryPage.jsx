@@ -25,7 +25,7 @@ function GalleryPage(){
     <h1>Gallery 🖼️</h1>
     <ul className="painting-gallery">
       {paintings.map((painting)=>(
-        <li className="painting-card" key={painting._id} onClick={()=>openModal(painting)} >
+        <li className="painting-card" key={painting._id} onClick={()=>openModal(painting)} loading="lazy" >
           <h2 className="mt-2 font-bold">{painting.title}</h2>
           <img loading="lazy" className="w-full h-48 object-cover" src={painting.image} alt={painting.title} />
           <h2 className="mt-2 font-bold">{painting.title}</h2>
