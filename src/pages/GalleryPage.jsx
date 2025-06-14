@@ -20,6 +20,18 @@ function GalleryPage(){
   const closeModal = () => {
     setSelectedPainting(null);
   };
+  const handleNext = () => {
+  const currentIndex = paintings.findIndex((p) => p._id === selectedPainting._id);
+  const nextIndex = (currentIndex + 1) % paintings.length;
+  setSelectedPainting(paintings[nextIndex]);
+};
+
+const handlePrev = () => {
+  const currentIndex = paintings.findIndex((p) => p._id === selectedPainting._id);
+  const prevIndex = (currentIndex - 1 + paintings.length) % paintings.length;
+  setSelectedPainting(paintings[prevIndex]);
+};
+
  return(
   <div className="painting-container shadow-lg p-4">
     <h1>Gallery 🖼️</h1>
@@ -38,7 +50,9 @@ function GalleryPage(){
       <Modal isOpen={selectedPainting !== null} onRequestClose={closeModal} className="modal" overlayClassName="overlay">
         {selectedPainting && (
           <div className="flex flex-col items-center">
+            <button className="nav-btn left" onClick={handlePrev}>⬅️ Prev</button>
             <img src={selectedPainting.image} alt={selectedPainting.title} className="max-w-full max-h-full object-contain" />
+            <button className="nav-btn right" onClick={handleNext}>Next ➡️</button>
             <h2 className="mt-4 text-xl font-bold">{selectedPainting.title}</h2>
             <p className="text-gray-600">${selectedPainting.price}</p>
             <button onClick={closeModal} className="mt-4 p-2 bg-red-500 text-white rounded">Close</button>

@@ -44,3 +44,18 @@ input:focus {
   max-height: 90vh; /* Ensure it fits within the screen */
   object-fit: contain; /* Keeps the aspect ratio */
 }
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  background: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.left {
+  left: 10px;
+}
+.right {
+  right: 10px;
+}

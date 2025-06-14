@@ -70,3 +70,18 @@
   align-items: center;
   justify-content: center;
 }
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  background: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.left {
+  left: 10px;
+}
+.right {
+  right: 10px;
+}
