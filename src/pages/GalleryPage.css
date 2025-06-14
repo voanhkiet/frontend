@@ -19,9 +19,8 @@
 
 .painting-card img {
   width: 100%;
-  border-radius: 8px;
-  height:auto;
-  max-width: 300px;
+  max-height: 400px;
+  object-fit: cover;
 }
 @media (max-width: 768px) {
   .painting-gallery {
@@ -51,4 +50,23 @@
 }
 .painting-container:hover img {
   opacity: 0.8; /* Fade effect */
+}
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
