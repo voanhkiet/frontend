@@ -1,6 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const CheckoutPage = ({ cart, setCart }) => {
+const CheckoutPage = () => {
+    const [cart, setCart] = useState([]);
+   
+       useEffect(() => {
+           const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+           setCart(savedCart);
+   }, []);  
   const [userInfo, setUserInfo] = useState({ name: "", address: "", payment: "" });
 
   const handleChange = (e) => {
