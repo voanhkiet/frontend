@@ -1,13 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const CartPage = ({ cart }) => {
+
+
+const CartPage = () => {
+    const [cart, setCart] = useState([]);
+
     useEffect(() => {
-  console.log("CartPage Received Cart Data:", cart);
-}, [cart]);
+        const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+        setCart(savedCart);
+}, []); // Loads cart when the page is opened
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-4xl font-bold">Shopping Cart 🛒</h1>
-      {cart && cart.length > 0 ? (
+      {cart.length > 0 ? (
         <ul className="cart-list">
           {cart.map((item, index) => (
             <li key={index} className="cart-item">
