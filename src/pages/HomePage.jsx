@@ -5,12 +5,9 @@ const HomePage = () => {
   const [filteredPaintings, setFilteredPaintings] = useState([]);
   const [filter, setFilter] = useState("all");
   const [sortOrder, setSortOrder] = useState("default");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(()=>{
-    fetch("https://backend-ybh5.onrender.com/paintings")
-      .then((res) => res.json())
-      .then((data) => setPaintings(data));
-  }, [])
+
 
   useEffect(() => {
     fetch("https://backend-ybh5.onrender.com/paintings")
@@ -31,6 +28,14 @@ const HomePage = () => {
     } else if (selectedFilter === "above-150") {
       setFilteredPaintings(paintings.filter((painting) => painting.price >= 150));
     }
+  };
+  const handleSearchChange =(event) =>{
+    const query = event.target.value.toLowerCase();
+    setSearchQuery(query);
+    setFilteredPaintings(
+      paintings.filter((painting) => painting.title.toLowerCase().includes(query)
+      )
+    );
   };
 
   const handleSortChange = (event) => {
@@ -71,6 +76,15 @@ const HomePage = () => {
         <option value="name-a-z">Name (A-Z)</option>
         <option value="name-z-a">Name (Z-A)</option>
       </select>
+
+  {/* Search Bar */}
+      <input
+        type="text"
+        placeholder="Search paintings..."
+        value={searchQuery}
+        onChange={handleSearchChange}
+        className="mt-4 p-2 border rounded w-full"
+      />
 
        {/* Painting Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
