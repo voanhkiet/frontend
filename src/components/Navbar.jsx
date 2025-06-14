@@ -10,6 +10,7 @@ const Navbar = () => {
           <Link to="/" className="text-white hover:underline">Home</Link>
           <Link to="/gallery" className="text-white hover:underline">Gallery</Link>
           <Link to="/cart" className="text-white hover:underline">Cart</Link>
+          <Link to="/checkout" className="text-white hover:underline">Checkout</Link>
         </div>
       </div>
     </nav>

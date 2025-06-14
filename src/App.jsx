@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import GalleryPage from "./pages/GalleryPage";
 import CartPage from "./pages/CartPage";
 import Navbar from "./components/Navbar";
+import CheckoutPage from "./pages/CheckoutPage";
 
 
 
@@ -30,6 +31,8 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/gallery" element={<GalleryPage cart={cart} setCart={setCart} />} />
         <Route path="/cart" element={<CartPage cart={cart} />} />
+        <Route path="/checkout" element={<CheckoutPage cart={cart} setCart={setCart} />} />
+
       </Routes>
     </Router>
   );
