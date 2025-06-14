@@ -7,11 +7,33 @@ Modal.setAppElement("#root"); // Required for accessibility
 function GalleryPage(){
  const [paintings,setPaintings] = useState([]);
   const [selectedPainting, setSelectedPainting] = useState(null);
+  const [cart, setCart] = useState([]);
  useEffect(()=>{
   axios.get("https://backend-ybh5.onrender.com/paintings")
   .then((response)=>setPaintings(response.data))
   .catch((error)=>console.error("Error fetchin paintings:", error));
  },[]);
+useEffect(() => {
+  const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+  setCart(savedCart);
+}, []);
+
+
+
+const addToCart = (painting) => {
+  setCart((prevCart) => {
+    const updatedCart = [...prevCart, painting];
+    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Persist cart
+    return updatedCart;
+  });
+};
+
+useEffect(() => {
+  console.log("Cart Data in CartPage:", cart);
+}, [cart]);
+
+
+
 
    const openModal = (painting) => {
     setSelectedPainting(painting);
@@ -32,6 +54,7 @@ const handlePrev = () => {
   setSelectedPainting(paintings[prevIndex]);
 };
 
+
  return(
   <div className="painting-container shadow-lg p-4">
     <h1>Gallery 🖼️</h1>
@@ -42,10 +65,15 @@ const handlePrev = () => {
           <img loading="lazy" className="w-full h-48 object-cover" src={painting.image} alt={painting.title} />
           <h2 className="mt-2 font-bold">{painting.title}</h2>
           <p className="text-gray-600">Price: ${painting.price}</p>
-
+          <button className="add-to-cart-btn" onClick={(event) => {
+            event.stopPropagation();
+            addToCart(painting);
+          }}
+            >🛒 Add to Cart</button>
         </li>
       ))}
     </ul>
+    
      {/* Lightbox Modal */}
       <Modal isOpen={selectedPainting !== null} onRequestClose={closeModal} className="modal" overlayClassName="overlay">
         {selectedPainting && (
