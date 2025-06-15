@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutPage = () => {
     const [cart, setCart] = useState([]);
-   
+   const navigate = useNavigate();
+
        useEffect(() => {
            const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
            setCart(savedCart);
@@ -21,6 +23,7 @@ const CheckoutPage = () => {
     alert(`Order placed for ${userInfo.name}! 🎉`);
     setCart([]); // ✅ Clear cart after purchase
     localStorage.removeItem("cart"); // ✅ Remove stored cart data
+    navigate("/confirmation"); // Redirect after purchase
   };
 
   return (
