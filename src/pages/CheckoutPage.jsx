@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./CheckoutPage.css";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import CheckoutFormComponent from "./CheckoutFormComponent";
 
 const CheckoutPage = () => {
     const [cart, setCart] = useState([]);
@@ -17,7 +18,7 @@ const CheckoutPage = () => {
    const CheckoutForm = () => {
     return(
       <Elements stripe={stripePromise}>
-
+        <CheckoutFormComponent />
       </Elements>
     );
    };
