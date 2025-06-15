@@ -61,6 +61,7 @@ const CheckoutPage = () => {
       <option value="bank-transfer">🏦 Bank Transfer</option>
       </select>
 
+      <CheckoutForm />
 
       <button className="checkout-btn mt-4" onClick={handleCheckout}>
         ✅ Confirm Purchase
