@@ -6,14 +6,19 @@
 }
 .navbar {
   display: flex;
-  flex-wrap: wrap; /* Allows items to adjust for small screens */
+  flex-wrap: wrap; /* Allows text to adjust for smaller screens */
   justify-content: space-between;
   align-items: center;
 }
+
 @media (max-width: 600px) {
-  .navbar-link {
-    font-size: 16px; /* Adjust for mobile */
+  .store-title {
+    font-size: 1.5rem; /* Reduces font size for smaller screens */
   }
+}
+.navbar-link {
+  padding: 8px;
+  margin: 4px;
 }
 .store-title {
   font-family: "Poppins", sans-serif; /* Use a modern font */
