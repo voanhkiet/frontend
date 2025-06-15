@@ -46,3 +46,15 @@ input:focus {
   transform: scale(0.95);
   background-color: #1e7e34;
 }
+
+.checkout-title {
+  white-space: normal; /* Ensures text wraps */
+  word-wrap: break-word; /* Prevents text overflow */
+  font-size: 5vw; /* Scales with screen size */
+}
+
+@media (max-width: 600px) {
+  .checkout-title {
+    font-size: 16px; /* Adjust font size for small screens */
+  }
+}
