@@ -5,15 +5,15 @@ import "./CheckoutPage.css";
 const CheckoutPage = () => {
     const [cart, setCart] = useState([]);
    const navigate = useNavigate();
-
+  const [inputValue, setInputValue] = useState("");
        useEffect(() => {
            const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
            setCart(savedCart);
    }, []);  
-  const [userInfo, setUserInfo] = useState({ name: "", address: "", payment: "" });
+ 
 
   const handleChange = (e) => {
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+    setTimeout(()=>setInputValue(e.target.value), 300)
   };
 
   const handleCheckout = () => {
@@ -21,14 +21,14 @@ const CheckoutPage = () => {
       alert("Your cart is empty!");
       return;
     }
-    alert(`Order placed for ${userInfo.name}! 🎉`);
+   
     setCart([]); // ✅ Clear cart after purchase
     localStorage.removeItem("cart"); // ✅ Remove stored cart data
     navigate("/confirmation"); // Redirect after purchase
   };
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="container mx-auto p-8 fade-in" >
       <h1 className="text-4xl font-bold">Checkout 🛒</h1>
       <h2 className="text-xl font-bold mt-4">Order Summary:</h2>
       <ul>
