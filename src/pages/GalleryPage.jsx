@@ -62,7 +62,7 @@ const handlePrev = () => {
       {paintings.map((painting)=>(
         <li className="painting-card" key={painting._id} onClick={()=>openModal(painting)} loading="lazy" >
           <h2 className="mt-2 font-bold">{painting.title}</h2>
-          <img loading="lazy" className="w-full h-48 object-cover" src={painting.image} alt={painting.title} />
+          <img loading="lazy" className="w-full h-48 object-cover" src={painting.image} alt={`Painting of ${painting.title}`} />
           <h2 className="mt-2 font-bold">{painting.title}</h2>
           <p className="text-gray-600">Price: ${painting.price}</p>
           <button className="add-to-cart-btn" onClick={(event) => {
@@ -79,7 +79,7 @@ const handlePrev = () => {
         {selectedPainting && (
           <div className="flex flex-col items-center">
             <button className="nav-btn left" onClick={handlePrev}>⬅️ Prev</button>
-            <img src={selectedPainting.image} alt={selectedPainting.title} className="max-w-full max-h-full object-contain" />
+            <img loading="lazy" src={selectedPainting.image} alt={selectedPainting.title} className="max-w-full max-h-full object-contain" />
             <button className="nav-btn right" onClick={handleNext}>Next ➡️</button>
             <h2 className="mt-4 text-xl font-bold">{selectedPainting.title}</h2>
             <p className="text-gray-600">${selectedPainting.price}</p>

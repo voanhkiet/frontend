@@ -17,7 +17,7 @@ const CartPage = () => {
           {cart.map((item, index) => (
             <li key={index} className="cart-item">
               <h2>{item.title}</h2>
-              <img className="w-32 h-32 object-cover" src={item.image} alt={item.title} />
+              <img loading="lazy" className="w-32 h-32 object-cover" src={item.image} alt={item.title} />
               <p>${item.price}</p>
             </li>
           ))}

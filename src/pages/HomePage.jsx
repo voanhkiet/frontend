@@ -115,7 +115,7 @@ const handlePrev = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
         {filteredPaintings.map((painting) => (
           <div key={painting._id} className="painting-container shadow-lg p-4" onClick={() => openModal(painting)}>
-            <img src={painting.image} alt={painting.title} className="w-full h-48 object-cover" />
+            <img loading="lazy" src={painting.image} alt={`Painting of ${painting.title}`} className="w-full h-48 object-cover" />
             <h2 className="mt-2 font-bold">{painting.title}</h2>
             <p className="text-gray-600">${painting.price}</p>
           </div>
@@ -126,7 +126,7 @@ const handlePrev = () => {
         {selectedPainting && (
           <div className="flex flex-col items-center">
             <button className="nav-btn left" onClick={handlePrev}>⬅️ Prev</button>
-            <img src={selectedPainting.image} alt={selectedPainting.title} className="max-w-full max-h-full w-auto h-auto object-contain" />
+            <img loading="lazy" src={selectedPainting.image} alt={selectedPainting.title} className="max-w-full max-h-full w-auto h-auto object-contain" />
             <button className="nav-btn right" onClick={handleNext}>Next ➡️</button>
             <h2 className="mt-4 text-xl font-bold">{selectedPainting.title}</h2>
             <p className="text-gray-600">${selectedPainting.price}</p>
