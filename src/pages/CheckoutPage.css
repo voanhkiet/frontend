@@ -58,3 +58,11 @@ input:focus {
     font-size: 16px; /* Adjust font size for small screens */
   }
 }
+.payment-method {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #f8f9fa;
+}
+
