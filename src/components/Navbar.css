@@ -1,43 +1,28 @@
-.navbar-link {
-  white-space: nowrap; /* Prevents breaking words */
-  overflow: hidden;
-  text-overflow: ellipsis; /* Adds "..." if text is too long */
-  font-size: 4vw; /* Scales with screen size */
-}
-.navbar {
+.navbar-links {
   display: flex;
-  flex-wrap: wrap; /* Allows text to adjust for smaller screens */
-  justify-content: space-between;
-  align-items: center;
-}
-
-@media (max-width: 600px) {
-  .store-title {
-    font-size: 1.5rem; /* Reduces font size for smaller screens */
-  }
-}
-.navbar-link {
-  padding: 8px;
-  margin: 4px;
+  flex-wrap: wrap; /* Allows wrapping on small screens */
+  gap: 15px; /* Adds space between links */
+ 
 }
 .store-title {
-  font-family: "Poppins", sans-serif; /* Use a modern font */
-  font-size: 2rem; /* Adjust size */
-  font-weight: bold; /* Make it stand out */
-  letter-spacing: 1.5px; /* Improve spacing */
-  color: white; /* Ensure readability */
-}
-.store-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem; /* Adjusted for better visibility */
+  font-weight: bold;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.store-title {
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
 }
 @media (max-width: 600px) {
+  .navbar {
+    flex-direction: column; /* Stacks navbar items */
+    text-align: center;
+  }
+  
+  .navbar-links {
+    flex-direction: column; /* Stack links vertically */
+    gap:5px;
+  }
+  
   .store-title {
-    font-size: 1.5rem; /* Adjust for mobile */
+    font-size: 1.5rem; /* Smaller font for mobile */
   }
 }
