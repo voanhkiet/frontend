@@ -1,23 +1,41 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { clearCart, removeFromCart } from "../redux/slices/cartSlice";
+
 const Cart = () => {
   const cart = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
   const total = cart.reduce((sum, item) => sum + item.price, 0);
   const itemCount = cart.length;
+  
+
   return (
-    <div>
-      <div classname="cart-items">
+    <div style={{padding: "2rem"}}>
+      <h2>🛒 Your Cart</h2>
+
+      {cart.length === 0 ? (
+        <p>Your cart is currently empty.</p>
+      ) : (
+      <div >
         {cart.map(item =>(
-          <div key={item._id}>
+          <div key={item._id} style={{marginBottom: "1rem", border: "1px solid #ccc", paddingBottom: "0.5rem"}}>
             <h4>{item.title}</h4>
-            <p>${item.price}</p>
+            <p>${item.price.toFixed(2)}</p>
+            <button onClick={() => dispatch(removeFromCart(item._id)) }>
+              Remove 
+            </button>
           </div>
         ))}
-      </div>
-      <div className="cart-summary">
-      <h3>🧾 Cart Summary</h3>
-      <p>Items: ${itemCount}</p>
-      <p>Total: ${total.toFixed(2)}</p>
-      </div>
+
+        <div style={{marginTop: "2rem", borderTop: "2px solid #000", paddingTop: "1rem"}}>
+          <h3>🧾 Cart Summary</h3>
+          <p>Items: ${itemCount}</p>
+          <p>Total: ${total.toFixed(2)}</p>
+          <button onClick={() => dispatch(clearCart())}>
+            Clear Cart
+          </button>
+        </div>
+     </div>
+      )}
     </div>
   );
 };
