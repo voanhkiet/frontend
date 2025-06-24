@@ -24,11 +24,11 @@ const PaintingList = () => {
         <div>
             <SearchBar setQuery={setQuery} />
             {filteredPaintings.map(painting =>(
-                <div key={painting.id}>
+                <div key={painting._id}>
                     <h3>{painting.title}</h3>
                     <img src={painting.imageUrl} alt={painting.title} />
                     <p>${painting.price}</p>
-                    // Inside each painting card:
+                    {/* Inside each painting card: */}
                     <button onClick={() => dispatch(addToCart(painting))}>
                         Add to Cart
                     </button>
