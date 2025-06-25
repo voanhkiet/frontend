@@ -24,26 +24,40 @@ const UploadPaintingForm = () => {
   };
 
   const submitPainting = async () => {
-    const token = localStorage.getItem("token"); // or however you store it
+  const token = localStorage.getItem("token");
 
-    if (!token) {
-        alert("Please log in first.");
-        return;
-    }
-    await fetch("https://backend-e0sb.onrender.com/paintings", {
+  if (!token) {
+    setShowLoginWarning(true);
+    return;
+  }
+
+  try {
+    const res = await fetch("https://backend-e0sb.onrender.com/paintings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`
       },
-      body: JSON.stringify({
-        title,
-        price,
-        imageUrl
-      })
+      body: JSON.stringify({ title, price, imageUrl })
     });
 
-  };
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error.message || "Failed to create painting.");
+    }
+
+    alert("✅ Painting created!");
+    setTitle("");
+    setPrice("");
+    setImage(null);
+    setImageUrl("");
+    setShowLoginWarning(false);
+  } catch (error) {
+    console.error("Error submitting painting:", error);
+    alert("❌ Failed to create painting: " + error.message);
+  }
+};
+
 
   return (
     <div style={{ maxWidth: "400px", margin: "2rem auto" }}>
