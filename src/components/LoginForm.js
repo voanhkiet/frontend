@@ -3,7 +3,7 @@ const handleLogin = async () => {
     const res = await fetch("https://backend-e0sb.onrender.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({ email: "voanhkiet261192@gmail.com", password: "0939742254" })
     });
 
     const data = await res.json();

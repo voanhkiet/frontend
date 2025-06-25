@@ -5,6 +5,7 @@ import CartPage from './pages/CartPage';
 import Header from './components/Header';
 import Home from './pages/Home';
 import UploadPaintingForm from './components/UploadPaintingForm';
+import LoginForm from './components/LoginForm';
 function App() {
   return (
     <Router>
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/login" element={<LoginForm />} />
           <Route path="/upload" element={<UploadPaintingForm />} />
         </Routes>
       </div>
