@@ -4,8 +4,7 @@ const UploadPaintingForm = () => {
   const [image, setImage] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
   const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-
+  const [price, setPrice] = useState("");const [showLoginWarning, setShowLoginWarning] = useState(false);
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
   };
@@ -62,7 +61,8 @@ const UploadPaintingForm = () => {
   return (
     <div style={{ maxWidth: "400px", margin: "2rem auto" }}>
       <h2>Add a Painting</h2>
-
+    {showLoginWarning && (
+        <p style={{ color: "red" }}>Please log in to create a painting.</p>)}
       <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
       <br />
       <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" />
