@@ -1,22 +1,62 @@
-const handleLogin = async () => {
-  try {
-    const res = await fetch("https://backend-e0sb.onrender.com/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: "voanhkiet261192@gmail.com", password: "0939742254" })
-    });
+import { useState } from "react";
 
-    const data = await res.json();
+const LoginForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-    if (res.ok && data.token) {
-      localStorage.setItem("token", data.token); // ✅ Save token
-      // Optionally redirect user
-      window.location.href = "/upload";
-    } else {
-      alert("Login failed: " + (data.message || "unknown error"));
+  const handleLogin = async (e) => {
+    e.preventDefault(); // prevent page refresh
+    setErrorMessage(""); // reset error
+
+    try {
+      const res = await fetch("https://backend-e0sb.onrender.com/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.token) {
+        localStorage.setItem("token", data.token);
+        window.location.href = "/upload"; // 🎯 Redirect on success
+      } else {
+        setErrorMessage(data.message || "Invalid email or password.");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setErrorMessage("Something went wrong during login.");
     }
-  } catch (error) {
-    console.error("Login error:", error);
-    alert("Something went wrong during login.");
-  }
+  };
+
+  return (
+    <div style={{ maxWidth: "400px", margin: "2rem auto" }}>
+      <h2>Log In</h2>
+
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          required
+        />
+        <br />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+        />
+        <br />
+        <button type="submit">Log In</button>
+      </form>
+    </div>
+  );
 };
+
+export default LoginForm;
