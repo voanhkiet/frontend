@@ -11,12 +11,16 @@ const LoginForm = () => {
     setErrorMessage(""); // reset error
 
     try {
-      const res = await fetch("https://backend-e0sb.onrender.com/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
-      });
-
+    const res = await fetch("https://backend-e0sb.onrender.com/login", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    email: email,
+    password: password
+  })
+});
       const data = await res.json();
 
       if (res.ok && data.token) {
