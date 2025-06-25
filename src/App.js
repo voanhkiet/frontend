@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import UploadPaintingForm from './components/UploadPaintingForm';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
+import ResetPasswordForm from './components/ResetPasswordForm';
 function App() {
   return (
     <Router>
@@ -18,6 +19,8 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/upload" element={<UploadPaintingForm />} />
           <Route path="/signup" element={<SignupForm />} />
+          <Route path="/reset-password" element={<ResetPasswordForm />} />
+          <Route path="/reset-password" element={<ResetPasswordForm />} />
         </Routes>
       </div>
     </Router>

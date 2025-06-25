@@ -63,6 +63,7 @@ const LoginForm = () => {
         </label>
         <br />
         <button type="submit">Log In</button>
+        <p><a href="/reset-password" style={{ fontSize: "0.9rem" }}>Forgot Password?</a></p>
       </form>
     </div>
   );
