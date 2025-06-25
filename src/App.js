@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/add" element={<UploadPaintingForm />} />
+          <Route path="/upload" element={<UploadPaintingForm />} />
         </Routes>
       </div>
     </Router>
