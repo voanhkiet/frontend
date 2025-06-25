@@ -26,6 +26,10 @@ const UploadPaintingForm = () => {
   const submitPainting = async () => {
     const token = localStorage.getItem("token"); // or however you store it
 
+    if (!token) {
+        alert("Please log in first.");
+        return;
+    }
     await fetch("https://backend-e0sb.onrender.com/paintings", {
       method: "POST",
       headers: {
@@ -39,8 +43,6 @@ const UploadPaintingForm = () => {
       })
     });
 
-    alert("Painting created!");
-    setTitle(""); setPrice(""); setImage(null); setImageUrl("");
   };
 
   return (
