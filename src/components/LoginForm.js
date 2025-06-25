@@ -4,6 +4,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault(); // prevent page refresh
@@ -52,6 +53,13 @@ const LoginForm = () => {
           placeholder="Password"
           required
         />
+        <label>
+          <input
+            type="checkbox"
+            checked={showPassword}
+            onChange={() => setShowPassword(!showPassword)}
+          /> Show Password
+        </label>
         <br />
         <button type="submit">Log In</button>
       </form>
