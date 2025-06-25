@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import UploadPaintingForm from './components/UploadPaintingForm';
 import LoginForm from './components/LoginForm';
+import SignupForm from './components/SignupForm';
 function App() {
   return (
     <Router>
@@ -16,6 +17,7 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/upload" element={<UploadPaintingForm />} />
+          <Route path="/signup" element={<SignupForm />} />
         </Routes>
       </div>
     </Router>
